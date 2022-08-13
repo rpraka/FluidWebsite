@@ -371,7 +371,7 @@
 		<!-- Delivery Form Scripts -->
 		<!-- <script src="assets/vendor/simple-forms/js/simple-forms-translations.js"></script> -->
 		<!-- <script src="assets/vendor/simple-forms/js/simple-forms.min.js"></script> -->
-		<!-- <script src="assets/js/form.js"></script> -->
+		 <script src="assets/js/newForm.js"></script> 
 
 		<!-- Main Theme JS File -->
 		<script src="assets/js/theme.js"></script>
@@ -400,50 +400,32 @@
 			</div>
 			<div class="row">
 				<!-- Contact Form -->
-				<div class="col-12 col-lg-10 offset-lg-1 sk__contact-form-col d-flex justify-content-end">
-					<div class="sk__contact-right text-center text-sm-start">
-
-						<!-- Preview Only Static Form -->
-						<form class="sk__form sk__contact-form">
-
-							<div class="form-group">
-								<input type="text" name="the_name" placeholder="Name*" tabindex="1">
-							</div>
-							<div class="form-group">
-								<input type="email" name="the_email" placeholder="Email*" tabindex="2">
-							</div>
-							<div class="form-group">
-								<textarea name="the_message" placeholder="Message*" tabindex="3"></textarea>
-							</div>
-
-							<button type="submit" tabindex="4">Submit</button>
-
-						</form>
-
-						<!-- Real Working Form - Simple Forms V3 -->
-						<!-- <div class="sf-wrapper">
-					<form id="contact-form-1" class="sk__form sk__contact-form" action="assets/vendor/simple-forms/sendmail.php" method="post">
-						
-						<div class="form-group">
-							<input type="text" name="name" value="" class="validate-name" min="2" placeholder="Name*" required>
+				<div class="bodyForm">
+					<div class="containerForm">
+					  <div class="wrapperForm">
+						<div class="company-info">
+						  <h3>Launch Offer for Early Birds</h3>
+						  <ul>
+							<p>Pre-orders closing soon. Get more than 50% off Retail by signing up now.</p>
+						  </ul>
 						</div>
-						<div class="form-group">
-							<input type="text" name="email" class="validate-email" placeholder="Email*" value="">
+						<div class="contactwaitform">
+						  <div class="alertForm">Your spot has been reserved</div>
+						  <form id="contactForm">
+							<p>
+							  <input type="text" name="name" id="name" required placeholder="First Name">
+							</p>
+							<p>
+							  <input type="email" name="email" id="email" required placeholder="Email Address">
+							</p>
+							<p class="full">
+							  <button type="submit">Reserve a Spot</button>
+							</p>
+						  </form>
 						</div>
-						<div class="form-group">
-							<textarea name="message" placeholder="Message*" required></textarea>
-						</div>
-
-						<div class="form-submit">
-							<button type="submit">Send now</button>
-						</div>
-
-						<div class="server-response"></div>
-
-					</form>
-				</div> -->
-
+					  </div>
 					</div>
+					<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 				</div>
 			</div>
 		</div>
