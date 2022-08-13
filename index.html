@@ -98,11 +98,11 @@
 		}
 
 		function saveToFirebase(name, email) {
-			console.log("attempting save to firebase" + " " + name + " " + email)
+			// console.log("attempting save to firebase" + " " + name + " " + email)
 			const splitEmail = email.split("@");
 			const emailHost = splitEmail[1].split(".")[0]
 			const userID = splitEmail[0] + "-" + emailHost
-			console.log(userID);
+			// console.log(userID);
 			const database = getDatabase();
 			set(ref(database, "users/" + userID), {
 				name: name,
@@ -117,7 +117,7 @@
 		}
 		// const email = "rat@ratata.com"
 		// saveToFirebase(email);
-		console.log("saved email to firebase")
+		// console.log("saved email to firebase")
 	</script>
 	<div class="dark-shade-1-bg justify-content-center mx-auto" style="max-width: 960px"
 		style="font-size: calc(1em + 1vw)">
@@ -452,8 +452,8 @@
 	<!-- Contact Us Section
 ================================================== -->
 	<section id="contact-us" class="sk__contact-us sk__py-m sk__parallax-background-section sk__flex-center-y">
-		<div class="sk__parallax-background-element sk__absolute sk__image-back-cover"></div>
-		<div class="sk__tint sk__absolute"></div>
+		<!-- <div class="sk__parallax-background-element sk__absolute sk__image-back-cover"></div> -->
+		<!-- <div class="sk__tint sk__absolute"></div> -->
 		<div class="container sk__powercontainer">
 			<!-- Section Header -->
 			<div class="row sk__contact-info sk__inner-header text-center">
@@ -469,7 +469,7 @@
 					<div class="containerForm">
 						<div class="wrapperForm">
 							<div class="company-info">
-								<h3>Launch Offer for Early Birds</h3>
+								<h2 class="text-center">Launch Offer for Early Birds</h2>
 								<ul>
 									<p>Pre-orders closing soon. Get more than 50% off Retail by signing up now.</p>
 								</ul>
@@ -478,14 +478,16 @@
 								<div class="alertForm">Your spot has been reserved</div>
 								<form id="contactForm">
 									<p>
-										<input type="text" name="name" id="name" required placeholder="First Name">
+										<input type="text" class="form-control" name="name" id="name" required
+											placeholder="First Name" style="color: black !important;">
 									</p>
 									<p>
-										<input type="email" name="email" id="email" required
-											placeholder="Email Address">
+										<input type="email" class="form-control" name="email" id="email" required
+											placeholder="Email Address" style="color: black !important;>
 									</p>
-									<p class="full">
-										<button id="submitFormButton" type="button">Reserve a Spot</button>
+									<p class=" full">
+										<button class="btn btn-dark" id="submitFormButton" type="button">Reserve a
+											Spot</button>
 									</p>
 								</form>
 							</div>
