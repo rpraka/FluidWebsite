@@ -129,6 +129,24 @@ ul {
 	border: 1px solid #a1a1a1;
 }
 
+/* input:-webkit-autofill,
+input:-webkit-autofill:focus {
+	transition: background-color 600000s 0s, color 600000s 0s;
+} */
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 1000px white inset !important;
+	-webkit-text-fill-color: black !important;
+	font-family: 'Lato' !important;
+
+}
+
+input[data-autocompleted] {
+	background-color: transparent !important;
+}
+
 .contact form button {
 	background: #a1a1a1;
 	border: 0;
