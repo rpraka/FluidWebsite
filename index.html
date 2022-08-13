@@ -54,6 +54,71 @@
 </head>
 
 <body class="sk__portfolio-item-page dark-shade-1-bg justify-content-center mx-auto">
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+		import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-database.js";
+
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+
+		// Your web app's Firebase configuration
+		const firebaseConfig = {
+			apiKey: "AIzaSyDBFhtLEy6Vh11orz1DF0x-BE11apNaC28",
+			authDomain: "stark-9aac1.firebaseapp.com",
+			databaseURL: "https://stark-9aac1-default-rtdb.firebaseio.com",
+			projectId: "stark-9aac1",
+			storageBucket: "stark-9aac1.appspot.com",
+			messagingSenderId: "668693880310",
+			appId: "1:668693880310:web:8471c7617e5d1190e43bd7"
+		};
+
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const database = getDatabase(app);
+
+		function submitForm(e) {
+			e.preventDefault();
+
+			// Get values
+			var name = getInputVal('name');
+			var email = getInputVal('email');
+
+			saveToFirebase(name, email)
+			// Show alert
+			document.querySelector('.alertForm').style.display = 'block';
+
+			// Hide alert after 3 seconds
+			setTimeout(function () {
+				document.querySelector('.alertForm').style.display = 'block';
+			}, 3000);
+
+			// Clear form
+			document.getElementById('contactForm').reset();
+		}
+
+		function saveToFirebase(name, email) {
+			console.log("attempting save to firebase" + " " + name + " " + email)
+			const splitEmail = email.split("@");
+			const emailHost = splitEmail[1].split(".")[0]
+			const userID = splitEmail[0] + "-" + emailHost
+			console.log(userID);
+			const database = getDatabase();
+			set(ref(database, "users/" + userID), {
+				name: name,
+				email: email
+			});
+		}
+
+		document.getElementById('submitFormButton').addEventListener('click', submitForm);
+
+		function getInputVal(id) {
+			return document.getElementById(id).value;
+		}
+		// const email = "rat@ratata.com"
+		// saveToFirebase(email);
+		console.log("saved email to firebase")
+	</script>
 	<div class="dark-shade-1-bg justify-content-center mx-auto" style="max-width: 960px"
 		style="font-size: calc(1em + 1vw)">
 
@@ -371,7 +436,7 @@
 		<!-- Delivery Form Scripts -->
 		<!-- <script src="assets/vendor/simple-forms/js/simple-forms-translations.js"></script> -->
 		<!-- <script src="assets/vendor/simple-forms/js/simple-forms.min.js"></script> -->
-		 <script src="assets/js/newForm.js"></script> 
+		<script src="assets/js/newForm.js"></script>
 
 		<!-- Main Theme JS File -->
 		<script src="assets/js/theme.js"></script>
@@ -402,28 +467,29 @@
 				<!-- Contact Form -->
 				<div class="bodyForm">
 					<div class="containerForm">
-					  <div class="wrapperForm">
-						<div class="company-info">
-						  <h3>Launch Offer for Early Birds</h3>
-						  <ul>
-							<p>Pre-orders closing soon. Get more than 50% off Retail by signing up now.</p>
-						  </ul>
+						<div class="wrapperForm">
+							<div class="company-info">
+								<h3>Launch Offer for Early Birds</h3>
+								<ul>
+									<p>Pre-orders closing soon. Get more than 50% off Retail by signing up now.</p>
+								</ul>
+							</div>
+							<div class="contactwaitform">
+								<div class="alertForm">Your spot has been reserved</div>
+								<form id="contactForm">
+									<p>
+										<input type="text" name="name" id="name" required placeholder="First Name">
+									</p>
+									<p>
+										<input type="email" name="email" id="email" required
+											placeholder="Email Address">
+									</p>
+									<p class="full">
+										<button id="submitFormButton" type="button">Reserve a Spot</button>
+									</p>
+								</form>
+							</div>
 						</div>
-						<div class="contactwaitform">
-						  <div class="alertForm">Your spot has been reserved</div>
-						  <form id="contactForm">
-							<p>
-							  <input type="text" name="name" id="name" required placeholder="First Name">
-							</p>
-							<p>
-							  <input type="email" name="email" id="email" required placeholder="Email Address">
-							</p>
-							<p class="full">
-							  <button type="submit">Reserve a Spot</button>
-							</p>
-						  </form>
-						</div>
-					  </div>
 					</div>
 					<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 				</div>
