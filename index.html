@@ -89,6 +89,11 @@
 			var name = getInputVal('name');
 			var email = getInputVal('email');
 
+			rdt('track', 'SignUp', {
+				"currency": email,
+				"value": 100
+			});
+
 			saveToFirebase(name, email)
 			// Show alert
 			document.querySelector('.alertForm').style.display = 'block';
@@ -100,6 +105,8 @@
 
 			// Clear form
 			document.getElementById('contactForm').reset();
+
+
 		}
 
 		function submitFormTop(e) {
@@ -109,6 +116,11 @@
 			// Get values
 			var name = getInputVal('nameTop');
 			var email = getInputVal('emailTop');
+
+			rdt('track', 'SignUp', {
+				"currency": email,
+				"value": 99
+			});
 
 			saveToFirebase(name, email)
 			// Show alert
@@ -142,9 +154,9 @@
 		function getInputVal(id) {
 			return document.getElementById(id).value;
 		}
-		// const email = "rat@ratata.com"
-		// saveToFirebase(email);
-		// console.log("saved email to firebase")
+	// const email = "rat@ratata.com"
+	// saveToFirebase(email);
+	// console.log("saved email to firebase")
 	</script>
 	<div class="dark-shade-1-bg justify-content-center mx-auto" style="max-width: 960px"
 		style="font-size: calc(1em + 1vw)">
