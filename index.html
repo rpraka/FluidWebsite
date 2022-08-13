@@ -97,6 +97,27 @@
 			document.getElementById('contactForm').reset();
 		}
 
+		function submitFormTop(e) {
+			e.preventDefault();
+			console.log("top submit")
+
+			// Get values
+			var name = getInputVal('nameTop');
+			var email = getInputVal('emailTop');
+
+			saveToFirebase(name, email)
+			// Show alert
+			document.querySelector('.alertFormTop').style.display = 'block';
+
+			// Hide alert after 3 seconds
+			setTimeout(function () {
+				document.querySelector('.alertFormTop').style.display = 'block';
+			}, 3000);
+
+			// Clear form
+			document.getElementById('contactFormTop').reset();
+		}
+
 		function saveToFirebase(name, email) {
 			// console.log("attempting save to firebase" + " " + name + " " + email)
 			const splitEmail = email.split("@");
@@ -111,6 +132,7 @@
 		}
 
 		document.getElementById('submitFormButton').addEventListener('click', submitForm);
+		document.getElementById('submitFormButtonTop').addEventListener('click', submitFormTop);
 
 		function getInputVal(id) {
 			return document.getElementById(id).value;
@@ -159,12 +181,6 @@
 					<!-- Project Header Section
 				================================================== -->
 					<section class="sk__project-header sk__flex-center-y">
-						<!-- <section> -->
-
-						<!-- <div
-							class="sk__parallax-background-element sk__absolute sk__image-back-cover sk__parallax-fixer">
-						</div> -->
-
 						<div class="container sk__powercontainer">
 
 							<div class="row">
@@ -193,9 +209,6 @@
 													&nbsp;Fluid One&nbsp;</h1>
 												<h2>Smart Home Controls from the Future <br> <br></h2>
 											</div>
-											<!-- <div class="cover-text-wrapper d-block mb-1">
-												<h2>Smart Home Controls from the Future</h2>
-											</div> -->
 
 										</div>
 									</div>
@@ -233,11 +246,47 @@
 										menus, microphones and dedicated apps.
 									</p>
 								</div>
+
 								<div class="sk__project-body-image-col px-4 mb-5">
 									<img src="assets/images/newImages/no.png" alt="Sample Image." style="width:100%;">
 								</div>
 
-
+								<div class="row mx-auto">
+									<!-- Contact Form -->
+									<div class="bodyForm">
+										<div class="containerForm">
+											<div class="wrapperForm">
+												<div class="company-info">
+													<h2 class="text-center">Launch Offer for Early Birds</h2>
+													<ul>
+														<p>Pre-orders closing soon. Get more than 50% off Retail by
+															signing up now.</p>
+													</ul>
+												</div>
+												<div class="contactwaitform">
+													<div class="alertFormTop">Your spot has been reserved</div>
+													<form id="contactFormTop">
+														<p>
+															<input type="text" class="form-control" name="name"
+																id="nameTop" required placeholder="First Name"
+																style="color: black !important;">
+														</p>
+														<p>
+															<input type="email" class="form-control" name="email"
+																id="emailTop" required placeholder="Email Address"
+																style="color: black !important;>
+														</p>
+														<p class=" full">
+															<button class="btn btn-dark" id="submitFormButtonTop"
+																type="button">Reserve a
+																Spot</button>
+														</p>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 								<div class="sk__project-body-image-col">
 									<img src="assets/images/newImages/pointingRight.svg" alt="Sample image."
 										class="w-25 mx-auto d-block">
@@ -493,7 +542,6 @@
 							</div>
 						</div>
 					</div>
-					<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 				</div>
 			</div>
 		</div>
