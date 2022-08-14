@@ -56,6 +56,14 @@
 	<!-- Simple Forms -->
 	<!-- <link rel="stylesheet" href="assets/vendor/simple-forms/css/simple-forms-skilltech-mod.css"> -->
 
+	<!-- Reddit Pixel -->
+	<script>
+		!function (w, d) { if (!w.rdt) { var p = w.rdt = function () { p.sendEvent ? p.sendEvent.apply(p, arguments) : p.callQueue.push(arguments) }; p.callQueue = []; var t = d.createElement("script"); t.src = "https://www.redditstatic.com/ads/pixel.js", t.async = !0; var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(t, s) } }(window, document); rdt('init', 't2_reqv553s', { "optOut": false, "useDecimalCurrencyValues": true, "aaid": "<AAID-HERE>", "email": "<EMAIL-HERE>", "externalId": "<EXTERNAL-ID-HERE>", "idfa": "<IDFA-HERE>" }); rdt('track', 'PageVisit');
+	</script>
+	<!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
+	<!-- End Reddit Pixel -->
+
+
 </head>
 
 <body class="sk__portfolio-item-page dark-shade-1-bg justify-content-center mx-auto">
@@ -142,7 +150,15 @@
 			const userID = splitEmail[0] + "-" + emailHost
 			// console.log(userID);
 			const database = getDatabase();
+			var unixtime = 1301090400;
+
+			var newDate = new Date();
+			newDate.setTime(unixtime * 1000);
+			let dateString = newDate.toUTCString();
+			let localDate = Date(dateString)
+
 			set(ref(database, "users/" + userID), {
+				timestamp: localDate,
 				name: name,
 				email: email
 			});
